@@ -1,0 +1,50 @@
+<div class="max-w-2xl mx-auto w-full px-4 py-8 flex flex-col gap-4">
+
+  <% @users.each do |user| %>
+
+    <div class="relative bg-white rounded-2xl border border-slate-200 p-4 sm:p-6 flex flex-col sm:flex-row items-center sm:items-stretch gap-4 sm:gap-6 hover:-translate-y-1 hover:shadow-lg transition-all duration-200">
+
+      <%= link_to "", user, class:"absolute inset-0 z-10 rounded-2xl" %>
+
+      <div class="flex-shrink-0 w-16 h-16 sm:w-20 sm:h-20 self-center rounded-full bg-gradient-to-br from-blue-50 to-indigo-50 flex items-center justify-center text-blue-600 font-extrabold text-2xl sm:text-3xl shadow-inner ring-1 ring-slate-100">
+        <%= user.username&.first&.upcase || "👤" %>
+      </div>
+
+      <div class="flex-1 min-w-0 flex flex-col justify-center text-center sm:text-left">
+        <h3 class="text-lg sm:text-xl font-bold text-slate-900 truncate">
+          <%= user.to_s %>
+        </h3>
+        <p class="text-sm font-medium text-slate-500 truncate mb-2">@<%= user.username %></p>
+
+        <div class="flex items-center justify-center sm:justify-start gap-1 text-xs text-slate-400">
+          <svg class="w-3.5 h-3.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+          <span class="truncate">Since <%= user.created_at.strftime("%b %Y") %></span>
+        </div>
+      </div>
+
+      <div class="relative z-20 flex-shrink-0 flex items-center gap-4 sm:gap-6 border-t sm:border-t-0 sm:border-l border-slate-100 pt-4 sm:pt-0 sm:pl-6 w-full sm:w-auto justify-center">
+
+        <div class="relative text-center group/stat hover:opacity-70 transition-opacity">
+          <a href="#" class="absolute inset-0 z-10"></a>
+          <span class="block font-extrabold text-slate-800 text-base sm:text-lg"><%= user.posts.count %></span>
+          <span class="text-[10px] text-slate-400 uppercase font-bold tracking-wider">Posts</span>
+        </div>
+
+        <div class="relative text-center group/stat hover:opacity-70 transition-opacity">
+          <a href="#" class="absolute inset-0 z-10"></a>
+          <span class="block font-extrabold text-slate-800 text-base sm:text-lg"><%= user.followers.count %></span>
+          <span class="text-[10px] text-slate-400 uppercase font-bold tracking-wider">Followers</span>
+        </div>
+
+        <div class="relative text-center group/stat hover:opacity-70 transition-opacity">
+          <a href="#" class="absolute inset-0 z-10"></a>
+          <span class="block font-extrabold text-slate-800 text-base sm:text-lg"><%= user.following.count %></span>
+          <span class="text-[10px] text-slate-400 uppercase font-bold tracking-wider">Following</span>
+        </div>
+
+      </div>
+
+    </div>
+  <% end %>
+
+</div>

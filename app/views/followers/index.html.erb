@@ -1,0 +1,22 @@
+<%= turbo_frame_tag "modal" do  %>
+  <div class="fixed inset-0 z-40 flex items-center justify-center bg-slate-900/20 backdrop-blur-[2px] pt-16 p-4">
+
+    <div class="bg-white rounded-2xl shadow-2xl w-full max-w-md max-h-[80vh] flex flex-col overflow-hidden ring-1 ring-slate-900/5">
+
+      <div class="px-4 py-3 border-b border-slate-100 flex justify-between items-center bg-white/90 backdrop-blur-md sticky top-0 z-10 shadow-sm">
+        <h2 class="font-bold text-slate-800 text-lg">Following users</h2>
+        <%= link_to user_path(@user), data: { turbo_frame: "_top" }, class: "w-8 h-8 flex items-center justify-center flex-shrink-0 text-slate-400 hover:text-slate-700 hover:bg-slate-100 rounded-full transition-all active:scale-95" do %>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        <% end %>
+      </div>
+      <div class="overflow-y-auto p-2 space-y-1">
+
+        <%= render "user_card" %>
+      </div>
+
+    </div>
+  </div>
+
+<% end %>

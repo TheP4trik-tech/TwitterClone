@@ -1,0 +1,56 @@
+<%= turbo_frame_tag @post do %>
+  <%= form_with(model: @post, method: :patch, class: "relative bg-white rounded-xl shadow-md border-2 border-blue-200 overflow-hidden mb-4 transition-all block") do |f| %>
+    <%= render "error", object: @post %>
+    <div class="p-4 sm:p-5">
+
+      <div class="flex items-start justify-between mb-3">
+
+        <div class="relative z-20 flex items-start gap-3">
+          <div class="w-10 h-10 sm:w-11 sm:h-11 bg-gradient-to-br from-blue-50 to-indigo-100 rounded-full flex items-center justify-center text-blue-700 font-extrabold text-lg shadow-inner ring-2 ring-slate-50 flex-shrink-0 opacity-80">
+            <%= @post.user.username&.first&.upcase || "👤" %>
+          </div>
+
+          <div class="flex flex-col justify-center mt-0.5">
+            <span class="font-bold text-slate-900 text-[15px] leading-none">
+              <%= @post.user.to_s %>
+            </span>
+
+            <div class="flex items-center gap-1.5 text-[11px] sm:text-xs text-blue-500 font-bold mt-1 uppercase tracking-wider">
+              <span>Editing post...</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="relative z-20 flex items-center gap-2 shrink-0">
+          <%= f.text_field :status,
+                           class: "w-24 px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-slate-50 border border-slate-200 text-slate-700 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-center transition-all",
+                           placeholder: "Status" %>
+        </div>
+
+      </div>
+
+      <div class="relative z-20 mt-3 space-y-3">
+
+        <%= f.text_field :title,
+                         class: "w-full text-lg font-bold text-slate-900 leading-snug bg-transparent border-0 border-b-2 border-slate-100 hover:border-slate-300 focus:border-blue-600 focus:ring-0 px-0 py-1 transition-colors placeholder-slate-300",
+                         placeholder: "Post title..." %>
+
+        <%= f.text_area :body,
+                        rows: 3,
+                        class: "w-full text-slate-800 text-[15px] sm:text-base leading-relaxed break-words bg-transparent border-0 border-b-2 border-slate-100 hover:border-slate-300 focus:border-blue-600 focus:ring-0 px-0 py-1 resize-y transition-colors placeholder-slate-300",
+                        placeholder: "What's on your mind?" %>
+
+      </div>
+
+    </div>
+
+    <div class="relative z-20 px-4 py-3 sm:px-5 sm:py-3 bg-slate-50/80 border-t border-slate-100 flex items-center justify-end gap-3">
+
+      <%= link_to "Cancel", post_path(@post), class: "px-4 py-1.5 text-sm font-semibold text-slate-500 hover:text-slate-800 hover:bg-slate-200/50 rounded-md transition-colors" %>
+
+      <%= f.submit "Save changes",  class: "cursor-pointer px-4 py-1.5 text-sm font-bold text-white bg-blue-600 hover:bg-blue-700 rounded-md shadow-sm hover:shadow transition-all" %>
+
+    </div>
+
+  <% end %>
+<% end %>

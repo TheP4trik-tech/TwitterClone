@@ -1,0 +1,67 @@
+
+    <%= form_with(model: @user,method: "patch",class: "block bg-white/80 backdrop-blur-xl rounded-2xl sm:rounded-3xl shadow-lg shadow-blue-100/50 border border-white/60 overflow-hidden") do |f| %>
+    <%= render "error", object: @user %>
+      <div class="h-24 sm:h-32 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 relative">
+        <div class="absolute inset-0 opacity-30 bg-[radial-gradient(circle_at_30%_50%,rgba(255,255,255,0.2),transparent_70%)]"></div>
+      </div>
+
+      <div class="px-4 sm:px-8 pb-6 sm:pb-8">
+        <div class="flex justify-end pt-3 sm:pt-4 relative z-30 gap-2">
+          <%= link_to "Cancel", user_path(@user),
+                      class: "inline-flex items-center text-xs sm:text-sm font-medium text-slate-500 hover:text-slate-700 bg-white/50 hover:bg-white border border-slate-200 rounded-full px-4 py-1.5 transition-all duration-200" %>
+
+          <%= f.submit "Save", class: "inline-flex items-center text-xs sm:text-sm font-bold text-white bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 rounded-full px-5 py-1.5 transition-all duration-200 shadow-md cursor-pointer transform hover:scale-105" %>  </div>
+        <div class="relative flex flex-col items-center -mt-14 sm:-mt-16">
+
+          <div class="w-20 h-20 sm:w-28 sm:h-28 bg-white rounded-full p-0.5 sm:p-1 shadow-lg ring-4 ring-white relative group cursor-pointer">
+            <div class="w-full h-full bg-gradient-to-br from-blue-50 to-indigo-100 rounded-full flex items-center justify-center text-3xl sm:text-4xl">
+              👤
+            </div>
+            <div class="absolute inset-1 bg-black/30 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <span class="text-white text-xl">📷</span>
+            </div>
+          </div>
+          <div class="text-center mt-3 sm:mt-4 w-full flex flex-col items-center">
+
+            <div class="-my-1 flex items-center justify-center gap-2 w-full max-w-[95%] sm:max-w-[450px] ">
+
+              <%= f.text_field :first_name, placeholder: @user.first_name, required: true,
+                               class: "flex-1 min-w-0 text-left text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight bg-slate-100 ring-1 ring-inset ring-slate-200 shadow-inner rounded-md px-3 py-1 focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all outline-none" %>
+
+              <%= f.text_field :last_name, placeholder: @user.last_name, required: true,
+                               class: "flex-1 min-w-0 text-left text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight bg-slate-100 ring-1 ring-inset ring-slate-200 shadow-inner rounded-md px-3 py-1 focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all outline-none" %>
+            </div>
+
+            <div class="mt-4 w-full max-w-[200px] sm:max-w-[250px] flex items-center justify-center -my-1">
+              <div class="relative flex items-center w-full">
+                <span class="absolute left-3 text-slate-400 text-xs sm:text-sm font-bold">@</span>
+                <%= f.text_field :username, placeholder: "username", required: true,
+                                 class: "w-full text-left text-slate-500 text-xs sm:text-sm font-medium bg-slate-100 ring-1 ring-inset ring-slate-200 shadow-inner rounded-md pl-7 pr-3 py-1.5 focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all outline-none" %>
+              </div>
+            </div>
+
+            <div class="mt-4 sm:mt-5 max-w-xs sm:max-w-md w-full mx-auto -my-2">
+              <%= f.text_area :bio, rows: 3, placeholder: @user.bio.present? ? nil : "Write something about yourself...",
+                              class: "w-full text-left text-slate-600 text-sm sm:text-base leading-relaxed bg-slate-100 ring-1 ring-inset ring-slate-200 shadow-inner rounded-xl px-4 py-3 focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all resize-none outline-none" %>
+            </div>
+          </div>
+
+
+          <div class="grid grid-cols-3 gap-2 sm:gap-4 w-full mt-8 sm:mt-10 pt-5 sm:pt-6 border-t border-slate-100 opacity-50 pointer-events-none select-none">
+            <div class="text-center">
+              <span class="block font-extrabold text-slate-900 text-base sm:text-xl"><%= @user.user_total_posts %></span>
+              <span class="text-slate-400 text-[10px] sm:text-xs uppercase font-semibold tracking-wider">Posts</span>
+            </div>
+            <div class="text-center border-x border-slate-100">
+              <span class="block font-extrabold text-slate-900 text-base sm:text-xl"><%= @user.user_total_followers %></span>
+              <span class="text-slate-400 text-[10px] sm:text-xs uppercase font-semibold tracking-wider">Followers</span>
+            </div>
+            <div class="text-center">
+              <span class="block font-extrabold text-slate-900 text-base sm:text-xl"><%= @user.user_total_following %></span>
+              <span class="text-slate-400 text-[10px] sm:text-xs uppercase font-semibold tracking-wider">Following</span>
+            </div>
+          </div>
+
+       </div>
+     </div>
+  <% end %>

@@ -31,6 +31,8 @@ gem "solid_cache"
 gem "solid_queue"
 gem "solid_cable"
 
+
+
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 
@@ -49,6 +51,9 @@ group :development, :test do
 
   # Audits gems for known security defects (use config/bundler-audit.yml to ignore issues)
   gem "bundler-audit", require: false
+
+  gem "better_errors"
+  gem "binding_of_caller"
 
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
   gem "brakeman", require: false

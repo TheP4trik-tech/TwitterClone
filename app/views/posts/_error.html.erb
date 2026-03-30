@@ -1,0 +1,9 @@
+<% if @post.errors.any? %>
+
+  <div class="absolute top-3 sm:top-4 left-1/2 -translate-x-1/2 z-50 w-max max-w-[90%] bg-red-500/95 backdrop-blur-md text-white px-4 py-1.5 rounded-full shadow-lg shadow-red-500/30 flex items-center gap-2 animate-bounce">
+    <span class="text-sm">⚠️</span>
+    <span class="text-xs sm:text-[13px] font-bold truncate">
+      <%= @post.errors.full_messages.join(" • ") %>
+    </span>
+  </div>
+<% end %>

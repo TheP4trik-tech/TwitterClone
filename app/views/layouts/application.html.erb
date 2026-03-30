@@ -8,31 +8,18 @@
   <meta name="turbo-refresh-scroll" content="preserve">
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
-    <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
-
-  <%= stylesheet_link_tag 'tailwind', "data-turbo-track": "reload" %>
-    <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
-  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
   <%= javascript_importmap_tags %>
 </head>
 
 <body class="bg-gray-50">
 <%= render "layouts/navbar" if user_signed_in? %>
-
-<div class="min-h-screen">
-  <% if notice %>
-    <div class="bg-blue-100 border-l-4 border-blue-500 text-blue-700 p-4 mb-4" role="alert">
-      <p><%= notice %></p>
-    </div>
-  <% end %>
-
-  <% if alert %>
-    <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-4" role="alert">
-      <p><%= alert %></p>
-    </div>
-  <% end %>
-
+  <div class="min-h-screen">
+    <% render "layouts/flash" %>
+  <main class="pb-16 sm:pb-0">
   <%= yield %>
+  </main>
 </div>
+<turbo-frame id = "modal"></turbo-frame>
 </body>
 </html>
