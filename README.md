@@ -1,11 +1,19 @@
 # README
 
-This is twitter-like application allowing user to follow/be followed, create public posts, search for other users.
+This is twitter-like application  allowing user to follow/be followed, create public posts, search for other users.
 Gems used in this project:
 Devise
 Hotwire
 Tailwincss
-Kaminary
+Kaminary // will be implemented
+Hotwire // will be implemented
+
+* TO-DO
+* Search field for user search, hotwire for some modern design features.
+* Turbo follow/unfollow in users followers/followed tab
+* Post adding
+
+
 
 
 
